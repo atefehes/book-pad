@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{book.name}}</title>
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+</head>
+
+
+
+<body class="m-5">
+    <div class="container">
+        <div class="row">
+            <a href=""></a>
+            <div class="col-md-9"> 
+                <div class="row mt-5 justify-content-center">
+                    {% for note in notes %}
+                    <div class="card mx-2 mb-3" style="width: 18rem;">
+                        <div class="card-body mx-auto">
+                            <h5 class="card-title"><a href="{% url 'book' note.book.slug %}">{{note.book.name}}</a></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{note.book.author}}</h6>
+                            <p class="card-text">{{note.text}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

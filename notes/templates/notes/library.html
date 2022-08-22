@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .image-thumbail {
+            max-height: 350px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body class="m-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 ">
+                <div class="card" style="width: 14rem;">
+                    <div class="card-header">
+                        {% if request.user.is_authenticated %}
+                            <h4> Hello {{request.user}}!</h4>
+                        {% else %}
+                            <h6>Note Pad</h6>
+                        {% endif %}
+                      </div>
+                    <ul class="list-group list-group-flush"></ul>
+
+                    {% if request.user.is_authenticated %}
+                    <li class="list-group-item">My Books</li>
+                    <li class="list-group-item"><a href="{% url 'mynotes' %}">My Notes/Highlights</a></li>
+                    <li class="list-group-item"><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                    <li class="list-group-item"><a href="{% url 'login'%}">Log In</a> or 
+                        <a href="{% url 'register'%}">Sign Up</a></li>
+                    {% endif %}
+                    <li class="list-group-item">Conatact us</li>
+                    </ul>
+                </div>
+            </div>
+            <a href=""></a>
+            <div class="col-md-9"> 
+                <div class="row mt-5 justify-content-center">
+                    {% for book in books %}
+                    <div class=" card card-custom mx-2 mb-3">
+                        <a href="{% url 'book' book.slug %}">
+                        {% if book.cover %}
+                            <img class="image-thumbail" src="{{book.cover.url}}" alt="Book Cover"></a>
+                        {% endif %}
+
+                        <div class="card-body mx-auto">
+                            <small>{{book.name}}</small>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
