@@ -90,3 +90,8 @@ def addNote(request, slug):
 def myNotes(request):
     notes = Note.objects.filter(user=request.user)
     return render(request, 'notes/my_notes.html', {'notes':notes})
+
+@login_required
+def myBooks(request):
+    books = Book.objects.filter(status='1')
+    return render(request, 'notes/my_books.html', {'books':books})

@@ -3,10 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 
-READ_STATUS = (
-                ('1', 'want to read'),
-                ('2', 'reading'),
-                ('3', 'read'),
+READ_STATUS = (('0', 'not added'),
+                ('1', 'added'),
                 )
 
 class StatusForm(forms.Form):

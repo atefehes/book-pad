@@ -12,7 +12,8 @@ urlpatterns = [
     path('', views.library , name="library"),
     path('book/<slug>/', views.bookDetail, name="book"),
     path('add/<slug>/', views.addNote, name='add'),
-    path('mynotes/', views.myNotes, name='mynotes')
+    path('mynotes/', views.myNotes, name='mynotes'),
+    path('mybooks/', views.myBooks, name='mybooks'),
 ]
 
 

@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-READ_STATUS = (('1', 'want to read'),
-                ('2', 'reading'),
-                ('3', 'read'),
+READ_STATUS = (('0', 'not added'),
+                ('1', 'added'),
+                
                 )
 
 
@@ -14,7 +14,7 @@ class Book(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True, null=True)
     author = models.CharField(max_length=50)
-    status = models.CharField(choices=READ_STATUS, max_length=20)
+    status = models.CharField(choices=READ_STATUS, max_length=20, default='0')
     cover = models.ImageField(upload_to='book-covers/', null=True)
     created = models.DateTimeField(auto_now_add=True)
 
